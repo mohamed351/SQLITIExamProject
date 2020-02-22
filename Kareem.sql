@@ -82,4 +82,99 @@ Begin Catch
 RollBack
 End Catch
 Commit
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+create proc SP_Add_StudentCourse
+@StudentID int,
+@CourseID int
+AS
+Begin Transaction
+Begin Try
+Insert into StudentCourse(StudentID,CourseID) values (@StudentID,@CourseID)
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+
+go
+
+create proc SP_UpdateCourseID_StudentCourse
+@StudentID int,
+@OldCourseID int,
+@NewCourseID int
+AS
+Begin Transaction
+Begin Try
+update StudentCourse set CourseID =@NewCourseID where  StudentID = @StudentID AND CourseID = @OldCourseID
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+
+go
+
+Create proc SP_GetAll_StudentCourse
+As
+Begin Transaction
+Begin Try
+Select * from StudentCourse
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+go
+Create proc SP_GetByStudentID_StudentCourse
+@StudentID int
+As
+Begin Transaction
+Begin Try
+Select * from StudentCourse where StudentID= @StudentID
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+go
+
+Create proc SP_GetByCourseID_StudentCourse
+@CourseID int
+As
+Begin Transaction
+Begin Try
+Select * from StudentCourse where CourseID= @CourseID
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+go
+
+Create proc SP_DeleteByStudentID_Student
+@StudentID int
+As
+Begin Transaction
+Begin Try
+Delete from StudentCourse where StudentID = @StudentID
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+go
+
+Create proc SP_DeleteByCourseID_Student
+@StudentID int,
+@CourseID int
+As
+Begin Transaction
+Begin Try
+Delete from StudentCourse where CourseID = @CourseID AND StudentID = @StudentID
+End try
+Begin Catch
+RollBack
+End Catch
+Commit
+go
 
