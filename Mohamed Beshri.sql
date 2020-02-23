@@ -47,3 +47,16 @@ select  ID, [Text],TypeOfQuestion,QuestionScore from ExamQuestion as ex inner jo
 on ex.QuestionID = qu.ID
 where ExamID=@ExamID
 order by newID() 
+-- exam Model Answer
+go
+Create proc SP_Select_ExamQuestions
+@examID int
+as
+Select * from Exam as ex
+inner join ExamQuestion as ExQ
+on ex.ID = ExQ.ExamID inner join Question as quest
+on quest.ID = ExQ.QuestionID inner join Choice as cho
+on cho.QuestionID = quest.ID
+where ex.ID =@examID and cho.IsCorrect =1
+
+
