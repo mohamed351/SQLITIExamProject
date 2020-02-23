@@ -37,3 +37,13 @@ declare @testing_tbl as ty_Choocies
 Insert into @testing_tbl (ChoiceText,IsCorrect) values('C#',1),
 ('PHP',0),('Ruby',0),('Python',0)
 execute sp_Add_Question_Choice 'What is the best Langugue Ever','MCQ',5,@testing_tbl
+Go 
+--this is Procdure Return random Questions Order 
+--There is another procdure that make 
+Create proc SP_Select_Exam
+@ExamID int
+as
+select  ID, [Text],TypeOfQuestion,QuestionScore from ExamQuestion as ex inner join Question as qu
+on ex.QuestionID = qu.ID
+where ExamID=@ExamID
+order by newID() 
