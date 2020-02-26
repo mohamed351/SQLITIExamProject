@@ -151,7 +151,7 @@ End Catch
 Commit
 go
 
-Create proc SP_DeleteByStudentID_Student
+Create proc SP_DeleteByStudentID_StudentCourse
 @StudentID int
 As
 Begin Transaction
@@ -164,7 +164,7 @@ End Catch
 Commit
 go
 
-Create proc SP_DeleteByCourseID_Student
+Create proc SP_DeleteByCourseID_StudentCourse
 @StudentID int,
 @CourseID int
 As

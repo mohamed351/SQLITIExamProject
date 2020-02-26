@@ -24,7 +24,7 @@ as
 	commit;
 go
 
-create proc SP_Insert_Topic
+create proc SP_Add_Topic
 @name nvarchar(50)
 as
 	begin transaction
@@ -94,7 +94,7 @@ as
 	commit;
 go
 
-create proc SP_Insert_Track
+create proc SP_Add_Track
 @name nvarchar(50)
 as
 	begin transaction
@@ -139,7 +139,7 @@ as
 go
 
 -- exam generation
-create proc SP_Insert_Question
+create proc SP_Add_Question
 @text nvarchar(50),
 @typeOfQuestion nvarchar(50),
 @questionScore int
