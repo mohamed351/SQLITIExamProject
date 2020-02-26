@@ -14,6 +14,7 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
 
 Create Proc SP_Update_Student
@@ -34,7 +35,9 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
+
 Create proc SP_GetAll_Student
 As
 Begin Transaction
@@ -45,7 +48,9 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
+
 Create proc SP_GetByID_Student
 @StudentID int
 As
@@ -57,7 +62,9 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
+
 Create proc SP_DeleteByID_Student
 @StudentID int
 As
@@ -69,7 +76,9 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
+
 Create proc SP_Login_Student
 @Username nvarchar(30),
 @Password nvarchar(30)
@@ -82,7 +91,9 @@ Begin Catch
 RollBack
 End Catch
 Commit
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+go
+
 create proc SP_Add_StudentCourse
 @StudentID int,
 @CourseID int
@@ -162,6 +173,7 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
 
 Create proc SP_DeleteByCourseID_StudentCourse
@@ -176,5 +188,6 @@ Begin Catch
 RollBack
 End Catch
 Commit
+
 go
 
