@@ -65,6 +65,86 @@ End Catch
 Commit
 
 go
+-- Subjects
+
+
+--Subject StoredProcedure
+
+create proc SP_Add_Subject 
+@Name nvarchar(max)
+As
+begin transaction
+begin try 
+insert into Subject
+values(@Name)
+end try
+begin catch
+RollBack
+end catch
+commit
+
+go
+
+create proc SP_GetAllSubject_Subject 
+As
+begin transaction
+begin try 
+select * from Subject
+end try
+begin catch
+RollBack
+end catch
+commit
+
+go
+
+create proc SP_GetById_Subject 
+@Subid int
+As
+begin transaction
+begin try 
+select * from Subject
+where @Subid = ID
+end try
+begin catch
+RollBack
+end catch
+commit
+
+go
+
+create proc SP_Update_Subject 
+@Subname nvarchar(max),
+@Subid int
+As
+begin transaction
+begin try 
+update Subject
+set Name = @Subname
+where @Subid = ID
+end try
+begin catch
+RollBack
+end catch
+commit
+
+go
+
+
+create proc SP_Delete_Subject 
+@Subid int
+As
+begin transaction
+begin try 
+delete from Subject
+where @Subid = ID
+end try
+begin catch
+RollBack
+end catch
+commit
+
+go
 -- OPTIONAL sp To GetCourse name using joins from instructor_Course
 create proc sp_GetByIDCourseData_instructorCourse(@Courseid)
 as
