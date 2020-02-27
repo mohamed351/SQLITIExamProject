@@ -156,12 +156,33 @@ as
 	commit;
 go
 
-create proc SP_Generate_Random_Exam
-@examName nvarchar(20),
+create proc SP_Generate_Exam
+@exam_name nvarchar(20),
 @duration int,
-@fullMark int
-as		
-	insert into Exam values(@examName, @duration, @fullMark)
-	insert into ExamQuestion (QuestionID, ExamID) 
-	select top(10)ID from Question
-	order by newid()			
+@fullmark int,
+@mcq_count int,
+@tf_count int,
+@subject_id int
+as
+	begin try
+		begin transaction
+			insert into Exam values(@exam_name, @duration, @fullmark)
+			declare @exam_id int = IDENT_CURRENT('Exam')			
+			insert into ExamQuestion
+			select @exam_id, ID from
+			(select * from (
+				select top(@mcq_count)@exam_id as exam_id, * from Question
+				where TypeOfQuestion = 'mcq' and SubjectID = @subject_id
+				order by newid()
+			) as mcq
+			union
+			select * from (
+				select top(@tf_count)@exam_id as exam_id, * from Question
+				where TypeOfQuestion = 't/f' and SubjectID = @subject_id
+				order by newid()
+			) as tf) as a
+		commit;
+	end try
+	begin catch
+		rollback;
+	end catch
