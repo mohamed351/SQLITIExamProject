@@ -4,6 +4,7 @@ create proc SP_Add_Exam
 @duration int ,
 @fullmark int 
 
+
 As
 begin transaction
 begin try 
