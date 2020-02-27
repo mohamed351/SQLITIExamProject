@@ -1,2 +1,0 @@
-# SQLITIExamProject
-For Eng/Ramy 
