@@ -19,10 +19,6 @@
   </DataSets>
   <Reports>
     <ProjectItem>
-      <Name>StudentPerTrack.rdl</Name>
-      <FullPath>StudentPerTrack.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>InsructorsReport.rdl</Name>
       <FullPath>InsructorsReport.rdl</FullPath>
     </ProjectItem>
@@ -35,12 +31,12 @@
       <FullPath>StudentGradePersent.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>StudentPerTrackWithID.rdl</Name>
-      <FullPath>StudentPerTrackWithID.rdl</FullPath>
+      <Name>StudentPerTrack.rdl</Name>
+      <FullPath>StudentPerTrack.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Report6.rdl</Name>
-      <FullPath>Report6.rdl</FullPath>
+      <Name>StudentPerTrackWithID.rdl</Name>
+      <FullPath>StudentPerTrackWithID.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
