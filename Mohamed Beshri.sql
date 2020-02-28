@@ -80,6 +80,7 @@ on exm.ID = answer.ExamID
 where student.ID =@studentID
 group by  student.ID, FName,exm.Name  
 GO
+-- stored for Reports
 -- Get Students In Track Report
 CREATE proc [dbo].[sp_Select_Student_Report]
 @TrackID int 
@@ -89,4 +90,31 @@ inner join Track as trk
 on st.TrackID =trk.ID
 where TrackID=@TrackID
 GO
+
+--report Insructors
+CREATE proc [dbo].[sp_Select_InsructorReport]
+@InstructorID int 
+as
+Select ins.Name as InsructorName  ,ISNULL(course.Name,'No Course Teach') as CourseName , count(studentcourse.StudentID) as ANumberOfStudent from Instructor as ins 
+left join InstructorCourse as cou
+on ins.ID = cou.InstructorID left join Course as course
+on course.ID = cou.CourseID left join StudentCourse  as studentcourse
+on studentcourse.CourseID = course.ID 
+where ins.ID = @InstructorID
+group by ins.Name ,course.ID ,course.Name
+GO
+--report ExamReport
+Create proc [dbo].[sp_Select_Student_ExamReport]
+@studentID int 
+as
+Select student.ID, FName,exm.Name as [Subject], sum(Grade) as Grade from Student as student inner join StudentAnswers as answer
+on student.ID  = answer.StudentID inner join Exam as exm
+on exm.ID = answer.ExamID
+where student.ID =@studentID
+group by  student.ID, FName,exm.Name 
+
+--
+GO
+
+
 
