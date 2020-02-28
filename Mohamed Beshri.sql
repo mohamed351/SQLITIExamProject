@@ -1,29 +1,32 @@
 -- ISCorrect not Correct Answer
-Alter table [dbo].[Choice]
-drop column [CorrectAnswer]
-go
-Alter table [dbo].[Choice]
-add  IsCorrect bit not null
-go
+--Types 
+-- used this type in Stored Procdure sp_Add_Question_Choice
 Create type ty_Choocies as table
 (
  [ChoiceText] nvarchar(max),
  [IsCorrect] bit 
 )
-go
+GO
+--used this type in Stored Procdure SP_ExamCorrection
+CREATE TYPE [dbo].[ty_Answer_Question] AS TABLE(
+	[QuestionID] [int] NULL,
+	[AnswerID] [int] NULL,
+	[QuestionText] [nvarchar](max) NULL
+)
+-- end types
+GO
+--Used to Add Question With their choices
 Create proc sp_Add_Question_Choice
 @text nvarchar(max),
 @typeOfQuestion nvarchar(20),
 @questionScore int,
-@tableChoocies ty_Choocies readonly --please see the video of type
+@tableChoocies ty_Choocies readonly 
 as
 begin try
 begin transaction 
---normal insert
 Insert into Question ([Text],TypeOfQuestion,QuestionScore) 
 values
 (@text,@typeOfQuestion,@questionScore);
--- get the the last identity
 declare @Question as int =  IDENT_CURRENT('Question');
 insert into Choice (QuestionID,ChoiceText,IsCorrect) select @Question,tbl.ChoiceText,tbl.IsCorrect  from @tableChoocies as tbl
 commit transaction
@@ -32,51 +35,8 @@ begin catch
  rollback transaction
 end catch
 GO
--- testing the procedure 
-declare @testing_tbl as ty_Choocies
-Insert into @testing_tbl (ChoiceText,IsCorrect) values('C#',1),
-('PHP',0),('Ruby',0),('Python',0)
-execute sp_Add_Question_Choice 'What is the best Langugue Ever','MCQ',5,@testing_tbl
-Go 
---this is Procdure Return random Questions Order 
---There is another procdure that make 
-Create proc SP_Select_Exam
-@ExamID int
-as
-select  ID, [Text],TypeOfQuestion,QuestionScore from ExamQuestion as ex inner join Question as qu
-on ex.QuestionID = qu.ID
-where ExamID=@ExamID
-order by newID() 
--- exam Model Answer
-go
-Create proc SP_Select_ExamQuestions
-@examID int
-as
-Select * from Exam as ex
-inner join ExamQuestion as ExQ
-on ex.ID = ExQ.ExamID inner join Question as quest
-on quest.ID = ExQ.QuestionID inner join Choice as cho
-on cho.QuestionID = quest.ID
-where ex.ID =@examID and cho.IsCorrect =1
-go
-Create proc [dbo].[sp_Select_Student_ExamReport]
-@studentID int 
-as
-Select student.ID, FName,exm.Name as [Subject], sum(Grade) as Grade from Student as student inner join StudentAnswers as answer
-on student.ID  = answer.StudentID inner join Exam as exm
-on exm.ID = answer.ExamID
-where student.ID =@studentID
-group by  student.ID, FName,exm.Name  
-GO
-CREATE proc [dbo].[sp_Select_Student_Report]
-@TrackID int 
-as
-Select distinct FName,LName ,trk.Name from Student as st 
-inner join Track as trk
-on st.TrackID =trk.ID
-where TrackID=@TrackID
-GO
-CREATE proc [dbo].[SP_StudentAnswer]
+--this stored Correct Exam
+CREATE proc [dbo].[SP_ExamCorrection]
 @ExamID int , 
 @StudentID int,
 @tbl_AnswerIt ty_Answer_Question readonly
@@ -99,6 +59,34 @@ begin catch
 rollback transaction
 end catch
 GO
-
-
+-- Show Correct Answer
+Create proc SP_Select_ExamQuestions
+@examID int
+as
+Select * from Exam as ex
+inner join ExamQuestion as ExQ
+on ex.ID = ExQ.ExamID inner join Question as quest
+on quest.ID = ExQ.QuestionID inner join Choice as cho
+on cho.QuestionID = quest.ID
+where ex.ID =@examID and cho.IsCorrect =1
+GO
+--Show Just Grade without persent
+Create proc [dbo].[sp_Select_Student_ExamReport]
+@studentID int 
+as
+Select student.ID, FName,exm.Name as [Subject], sum(Grade) as Grade from Student as student inner join StudentAnswers as answer
+on student.ID  = answer.StudentID inner join Exam as exm
+on exm.ID = answer.ExamID
+where student.ID =@studentID
+group by  student.ID, FName,exm.Name  
+GO
+-- Get Students In Track Report
+CREATE proc [dbo].[sp_Select_Student_Report]
+@TrackID int 
+as
+Select distinct FName,LName ,trk.Name from Student as st 
+inner join Track as trk
+on st.TrackID =trk.ID
+where TrackID=@TrackID
+GO
 
