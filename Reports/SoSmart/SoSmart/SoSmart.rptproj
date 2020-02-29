@@ -6,6 +6,10 @@
       <Name>DataSource1.rds</Name>
       <FullPath>DataSource1.rds</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>DataSource2.rds</Name>
+      <FullPath>DataSource2.rds</FullPath>
+    </ProjectItem>
   </DataSources>
   <DataSets>
     <ProjectItem>
@@ -15,6 +19,10 @@
     <ProjectItem>
       <Name>DataSet2.rsd</Name>
       <FullPath>DataSet2.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DataSet3.rsd</Name>
+      <FullPath>DataSet3.rsd</FullPath>
     </ProjectItem>
   </DataSets>
   <Reports>
@@ -37,6 +45,26 @@
     <ProjectItem>
       <Name>StudentPerTrackWithID.rdl</Name>
       <FullPath>StudentPerTrackWithID.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Show topics.rdl</Name>
+      <FullPath>Show topics.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AllStudent.rdl</Name>
+      <FullPath>AllStudent.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Show grade.rdl</Name>
+      <FullPath>Show grade.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Show questions.rdl</Name>
+      <FullPath>Show questions.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report1.rdl</Name>
+      <FullPath>Report1.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

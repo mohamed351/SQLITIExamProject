@@ -111,6 +111,20 @@ on student.ID  = answer.StudentID inner join Exam as exm
 on exm.ID = answer.ExamID
 where student.ID =@studentID
 group by  student.ID, FName,exm.Name ,exm.FullMark
+GO
+-------------------------- Report
+Create proc SP_ExamQuestion_Report
+@ExamID int
+AS
+Select ex.Name,q.[Text] , ch.ChoiceText, IsCorrect from Exam  as ex
+inner join ExamQuestion as question
+on ex.ID = question.ExamID
+inner join Question as q
+on q.ID = question.QuestionID
+inner join Choice as ch
+on ch.QuestionID = q.ID
+where ex.ID =1
+
 
 
 
