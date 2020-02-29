@@ -123,7 +123,7 @@ inner join Question as q
 on q.ID = question.QuestionID
 inner join Choice as ch
 on ch.QuestionID = q.ID
-where ex.ID =1
+where ex.ID =@ExamID
 
 
 
