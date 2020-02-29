@@ -103,6 +103,14 @@ on studentcourse.CourseID = course.ID
 where ins.ID = @InstructorID
 group by ins.Name ,course.ID ,course.Name
 GO
+Create proc [dbo].[sp_Select_Student_ExamReport2]
+@studentID int 
+as
+Select student.ID, FName,exm.Name as [Subject],exm.FullMark , sum(Grade) as Grade from Student as student inner join StudentAnswers as answer
+on student.ID  = answer.StudentID inner join Exam as exm
+on exm.ID = answer.ExamID
+where student.ID =@studentID
+group by  student.ID, FName,exm.Name ,exm.FullMark
 
 
 
