@@ -146,7 +146,8 @@ commit
 
 go
 -- OPTIONAL sp To GetCourse name using joins from instructor_Course
-create proc sp_GetByIDCourseData_instructorCourse(@Courseid)
+create proc sp_GetByIDCourseData_instructorCourse
+@Courseid int
 as
 Begin Transaction 
 Begin Try

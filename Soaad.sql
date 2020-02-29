@@ -1,5 +1,26 @@
 --instructor + Course
-
+create proc SP_Add_Instructor
+ @name varchar(50),
+ @password varchar(50),
+ @username varchar(50)
+ as
+ insert into Instructor([Name],Username,[Password])
+ values(@name,@username,@password)
+  
+ go 
+ 
+ create proc SP_Update_Instructor
+ @id int,
+ @name varchar(50),
+ @password varchar(50),
+ @username varchar(50)
+ as
+ update Instructor
+ set [Name]=@name,Username=@username,[Password]=@password
+ where ID=@id
+ 
+ go 
+ 
   create proc SP_GetAll_Instructor
   as
   select *from Instructor

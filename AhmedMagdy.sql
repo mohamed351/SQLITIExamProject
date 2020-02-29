@@ -143,12 +143,13 @@ go
 create proc SP_Add_Question
 @text nvarchar(50),
 @typeOfQuestion nvarchar(50),
-@questionScore int
+@questionScore int,
+@SubjectID int 
 as
 	begin transaction
 	begin try
 		insert into Question
-		values(@text, @typeOfQuestion, @questionScore)
+		values(@text, @typeOfQuestion, @questionScore,@SubjectID)
 	end try
 	begin catch
 		rollback;

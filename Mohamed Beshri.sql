@@ -70,7 +70,7 @@ on quest.ID = ExQ.QuestionID inner join Choice as cho
 on cho.QuestionID = quest.ID
 where ex.ID =@examID and cho.IsCorrect =1
 GO
---Show Just Grade without persent
+--Show Just Grade without percennt
 Create proc [dbo].[SP_Select_Student_ExamReport]
 @studentID int 
 as
@@ -103,18 +103,8 @@ on studentcourse.CourseID = course.ID
 where ins.ID = @InstructorID
 group by ins.Name ,course.ID ,course.Name
 GO
---report ExamReport
-Create proc [dbo].[SP_Select_Student_ExamReport]
-@studentID int 
-as
-Select student.ID, FName,exm.Name as [Subject], sum(Grade) as Grade from Student as student inner join StudentAnswers as answer
-on student.ID  = answer.StudentID inner join Exam as exm
-on exm.ID = answer.ExamID
-where student.ID =@studentID
-group by  student.ID, FName,exm.Name 
 
---
-GO
+
 
 
 
