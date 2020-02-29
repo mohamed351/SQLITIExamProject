@@ -66,6 +66,10 @@
       <Name>Report1.rdl</Name>
       <FullPath>Report1.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Report2.rdl</Name>
+      <FullPath>Report2.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

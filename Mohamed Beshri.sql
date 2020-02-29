@@ -124,6 +124,18 @@ on q.ID = question.QuestionID
 inner join Choice as ch
 on ch.QuestionID = q.ID
 where ex.ID =@ExamID
+GO
+Create proc SP_QuestionAnswerReport
+@ExamID int,
+@StudentID int 
+as
+Select ex.ID, st.FName, st.LName, ex.Name, stu.AnswerText, Quest.Text, stu.IsCorrect  from Exam as ex 
+inner join StudentAnswers as stu
+on ex.ID = stu.ExamID inner join Student as st
+on st.ID = stu.StudentID left join Question as Quest
+on Quest.ID = stu.ID 
+where ex.ID =@ExamID and st.ID=@StudentID
+
 
 
 

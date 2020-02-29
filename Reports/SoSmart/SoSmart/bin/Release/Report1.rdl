@@ -21,13 +21,13 @@
                           <TablixBody>
                             <TablixColumns>
                               <TablixColumn>
-                                <Width>1in</Width>
+                                <Width>1.82292in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>1in</Width>
+                                <Width>1.46875in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>1in</Width>
+                                <Width>1.70833in</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -405,7 +405,7 @@
                           <DataSetName>DataSet1</DataSetName>
                           <Top>0.5in</Top>
                           <Height>0.64in</Height>
-                          <Width>3in</Width>
+                          <Width>5in</Width>
                           <Style />
                         </Tablix>
                         <Textbox Name="Name">
@@ -441,7 +441,6 @@
                       <KeepTogether>true</KeepTogether>
                       <Style />
                     </Rectangle>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -494,7 +493,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Report1</Value>
+                <Value>Exam Questions Report</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>20pt</FontSize>
