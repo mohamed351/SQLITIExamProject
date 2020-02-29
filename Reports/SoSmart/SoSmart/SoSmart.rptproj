@@ -31,10 +31,6 @@
       <FullPath>InsructorsReport.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>StudentGrade.rdl</Name>
-      <FullPath>StudentGrade.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>StudentGradePersent.rdl</Name>
       <FullPath>StudentGradePersent.rdl</FullPath>
     </ProjectItem>
@@ -45,22 +41,6 @@
     <ProjectItem>
       <Name>StudentPerTrackWithID.rdl</Name>
       <FullPath>StudentPerTrackWithID.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Show topics.rdl</Name>
-      <FullPath>Show topics.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>AllStudent.rdl</Name>
-      <FullPath>AllStudent.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Show grade.rdl</Name>
-      <FullPath>Show grade.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Show questions.rdl</Name>
-      <FullPath>Show questions.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Report1.rdl</Name>
