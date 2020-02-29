@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyDataLayer</name>
+    </assembly>
+    <members>
+        <member name="F:MyDataLayer.MyData.ConnectionServer">
+            <summary>
+            this is to get the ConnectionString 
+            </summary>
+        </member>
+        <member name="M:MyDataLayer.MyData.#ctor(System.String)">
+            <summary>
+            Database Conncetion this connection 
+            </summary>
+            <param name="Connection">Connection String </param>
+        </member>
+        <member name="M:MyDataLayer.MyData.MyMethod(System.String,MyDataLayer.MyData.TypeStatment)">
+            <summary>
+            This is method Deal with Database 
+            </summary>
+            <param name="Command">SQL Statment</param>
+            <param name="MyStatment">Choose Statment</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyDataLayer.MyData.MyMethodAsync(System.String,MyDataLayer.MyData.TypeStatment)">
+            <summary>
+            
+            </summary>
+            <param name="Command"></param>
+            <param name="MyStatment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyDataLayer.MyData.MyMethod(System.String,System.Data.SqlClient.SqlParameter[],MyDataLayer.MyData.TypeStatment)">
+            <summary>
+            This is method Deals with Database 
+            </summary>
+            <param name="storedProcedure">Stord Procedure</param>
+            <param name="Par">Sql Parameter </param>
+            <param name="MyStatment">Type of Statment</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyDataLayer.MyData.MyMethodAsync(System.String,System.Data.SqlClient.SqlParameter[],MyDataLayer.MyData.TypeStatment)">
+            <summary>
+            
+            </summary>
+            <param name="storedProcedure"></param>
+            <param name="Par"></param>
+            <param name="MyStatment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyDataLayer.MyData.Dispose">
+            <summary>
+            GC
+            </summary>
+        </member>
+        <member name="T:MyDataLayer.MyData.TypeStatment">
+            <summary>
+            this is enum made to choose if the stored procedure or statement is Select or Update or Insert or Delete
+            </summary>
+        </member>
+        <member name="F:MyDataLayer.MyData.TypeStatment.Select">
+            <summary>
+            Select Data
+            </summary>
+        </member>
+        <member name="F:MyDataLayer.MyData.TypeStatment.UpdateOrDeleteOrInsert">
+            <summary>
+            Update or Delete or Insert
+            </summary>
+        </member>
+        <member name="F:MyDataLayer.MyData.TypeStatment.AggregateFunction">
+            <summary>
+            one Value
+            </summary>
+        </member>
+    </members>
+</doc>
